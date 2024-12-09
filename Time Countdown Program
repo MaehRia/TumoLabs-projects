@@ -1,0 +1,26 @@
+#We import the time module in this program to control the timing of actions,
+# ensuring the countdown progresses in one-second intervals.
+import time
+
+#Countdown timer that takes the number of seconds as input
+#and displays the countdown in the terminal.
+def countdown_timer(seconds):
+
+    while seconds > 0:
+        mins, secs = divmod(seconds, 60)  # Convert seconds to minutes and seconds
+        timer_format = f"{mins:02}:{secs:02}"  # Format as MM:SS
+        print(timer_format, end="\r")  # Print on the same line
+        time.sleep(1)  # Wait for 1 second
+        seconds -= 1 # step which ensures that counting goes right
+
+    print("00:00\nTime's up!")  # Display when the countdown ends
+
+# Input from the user
+try:
+    user_input = int(input("Enter the countdown time in seconds: "))
+    if user_input > 0:
+        countdown_timer(user_input)
+    else:
+        print("Please enter a positive number.")
+except ValueError:
+    print("Invalid input. Please enter an integer.")
